@@ -1,4 +1,4 @@
-package org.wikipedia.search
+package org.wikipedia.main
 
 import androidx.recyclerview.widget.RecyclerView
 import androidx.test.core.app.ApplicationProvider
@@ -20,6 +20,7 @@ import org.junit.runner.RunWith
 import org.wikipedia.Constants
 import org.wikipedia.R
 import org.wikipedia.TestUtil
+import org.wikipedia.search.SearchActivity
 
 @LargeTest
 @RunWith(AndroidJUnit4::class)
@@ -27,8 +28,12 @@ class SearchIntentTest {
 
     @Rule
     @JvmField
-    var mActivityTestRule = ActivityScenarioRule<SearchActivity>(SearchActivity.newIntent(ApplicationProvider.getApplicationContext(),
-            Constants.InvokeSource.INTENT_SHARE, "barack obama"))
+    var mActivityTestRule = ActivityScenarioRule<SearchActivity>(
+        SearchActivity.newIntent(
+            ApplicationProvider.getApplicationContext(),
+            Constants.InvokeSource.INTENT_SHARE, "barack obama"
+        )
+    )
 
     @Test
     fun testSearchActivityWithQuery() {

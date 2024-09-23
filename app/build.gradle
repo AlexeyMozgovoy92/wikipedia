@@ -5,6 +5,7 @@ plugins {
     id 'kotlin-android'
     id 'kotlin-parcelize'
     id 'kotlinx-serialization'
+    id 'allure-adb-plugin'
 }
 
 // Copy the signing.properties.sample file to ~/.sign/signing.properties and adjust the values.
@@ -39,7 +40,7 @@ android {
         targetSdk 34
         versionCode 50484
         testApplicationId 'org.wikipedia.test'
-        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        testInstrumentationRunner "com.kaspersky.kaspresso.runner.KaspressoRunner"
         testInstrumentationRunnerArguments clearPackageData: 'true'
 
         vectorDrawables.useSupportLibrary = true
@@ -263,14 +264,12 @@ dependencies {
     testImplementation 'org.hamcrest:hamcrest:2.2'
     testImplementation "androidx.room:room-testing:$roomVersion"
 
-    androidTestImplementation "androidx.test.espresso:espresso-core:$espressoVersion"
     androidTestImplementation "androidx.test.espresso:espresso-contrib:$espressoVersion"
-    androidTestImplementation "androidx.test.espresso:espresso-intents:$espressoVersion"
-    androidTestImplementation "androidx.test.espresso:espresso-web:$espressoVersion"
     androidTestImplementation 'androidx.test.ext:junit:1.1.5'
-    androidTestImplementation 'androidx.test.uiautomator:uiautomator:2.3.0'
     androidTestImplementation "androidx.room:room-testing:$roomVersion"
     androidTestUtil 'androidx.test:orchestrator:1.4.2'
+    androidTestImplementation 'com.kaspersky.android-components:kaspresso:1.5.4'
+    androidTestImplementation 'com.kaspersky.android-components:kaspresso-allure-support:1.5.4'
 }
 
 private setSigningConfigKey(config, Properties props) {
